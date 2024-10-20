@@ -1,6 +1,6 @@
 {
-    "name": "Debian with Systemd",
-    "image": "devimages/bookworm-devcontainer:latest",
+    "name": "Ubuntu 22.04",
+    "image": "ubuntu:22.04",
     "runArgs": [
         "it",
         "--privileged",
