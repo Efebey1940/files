@@ -1,6 +1,6 @@
 {
     "name": "Debian with Systemd",
-    "image": "mcr.microsoft.com/devcontainers/debian:bookworm",
+    "image": "debian:bookworm",
     "features": {
         "docker-in-docker": "latest"
     },
