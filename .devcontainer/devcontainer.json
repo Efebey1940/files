@@ -1,0 +1,22 @@
+{
+    "name": "Debian with Systemd",
+    "image": "mcr.microsoft.com/devcontainers/debian:bookworm",
+    "features": {
+        "docker-in-docker": "latest"
+    },
+    "runArgs": [
+        "--cap-add=ALL",
+        "--security-opt=apparmor=unconfined",
+        "--tmpfs", "/tmp",
+        "--tmpfs", "/run",
+        "--tmpfs", "/run/lock",
+        "--volume", "/sys/fs/cgroup:/sys/fs/cgroup:ro",
+        "--volume", "/dev:/dev"
+    ],
+    "overrideCommand": false,
+    "mounts": [
+        "source=/var/lib/docker,target=/var/lib/docker,type=bind"
+    ],
+    "postCreateCommand": "apt-get update && apt-get install -y systemd systemctl",
+    "remoteUser": "root"
+}
