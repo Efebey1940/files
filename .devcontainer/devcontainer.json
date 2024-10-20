@@ -1,5 +1,5 @@
 {
-  "name": "Ubuntu 22.04 with RDP, systemd, and hostnamectl",
+  "name": "Ubuntu 22.04",
   "image": "ubuntu:22.04",
   "runArgs": [
     "--cap-add=ALL",
@@ -11,6 +11,7 @@
     "--volume", "/dev:/dev"
   ],
   "mounts": [
+    "source=/var/lib/docker,target=/var/lib/docker,type=bind",
     "source=/sys/fs/cgroup,target=/sys/fs/cgroup,type=bind,consistency=cached"
   ],
   "postStartCommand": "apt update && apt install systemctl docker.io wget curl git -y",
