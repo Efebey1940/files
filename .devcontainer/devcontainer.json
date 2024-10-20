@@ -1,6 +1,6 @@
 {
     "name": "Debian with Systemd",
-    "image": "debian:bookworm",
+    "image": "devimages/bookworm-devcontainer:latest",
     "runArgs": [
         "it",
         "--privileged",
