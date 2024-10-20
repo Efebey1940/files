@@ -4,18 +4,18 @@
   "runArgs": [
     "--cap-add=ALL",
     "--security-opt", "seccomp=unconfined",
-    "--tmpfs", "/tmp:exec",
+    "--tmpfs", "/tmp",
     "--tmpfs", "/run",
     "--tmpfs", "/run/lock",
     "--volume", "/sys/fs/cgroup:/sys/fs/cgroup:ro",
-    "--volume", "/dev:/dev"
+    "--volume", "/dev:/dev",
+    "--volume", "/:/mnt"
   ],
   "mounts": [
     "source=/var/lib/docker,target=/var/lib/docker,type=bind",
     "source=/sys/fs/cgroup,target=/sys/fs/cgroup,type=bind,consistency=cached"
   ],
-  "postStartCommand": "apt update && apt install systemctl docker.io wget curl git -y",
-  "forwardPorts": [22],
+  "postStartCommand": "apt update && apt install systemctl docker.io wget curl git sudo docker-compose -y && hostname EfeVPS",
   "remoteUser": "root",
   "customizations": {
     "vscode": {
