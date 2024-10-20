@@ -1,6 +1,6 @@
 {
     "name": "Debian with Systemd",
-    "image": "debian:bookworm"
+    "image": "debian:bookworm",
     },
     "runArgs": [
         "--cap-add=ALL",
