@@ -1,7 +1,7 @@
 {
     "name": "Debian with Systemd",
     "image": "debian:bookworm",
-    },
+    }
     "runArgs": [
         "--cap-add=ALL",
         "--security-opt=apparmor=unconfined",
