@@ -1,8 +1,6 @@
 {
     "name": "Debian with Systemd",
-    "image": "debian:bookworm",
-    "features": {
-        "docker-in-docker": "latest"
+    "image": "debian:bookworm"
     },
     "runArgs": [
         "--cap-add=ALL",
