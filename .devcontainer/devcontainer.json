@@ -2,6 +2,8 @@
     "name": "Debian with Systemd",
     "image": "debian:bookworm",
     "runArgs": [
+        "it",
+        "--privileged",
         "--cap-add=ALL",
         "--security-opt=apparmor=unconfined",
         "--tmpfs", "/tmp",
