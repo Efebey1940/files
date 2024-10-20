@@ -1,20 +1,29 @@
 {
-    "name": "Ubuntu 22.04 with Systemd",
-    "image": "mcr.microsoft.com/vscode/devcontainers/base:0-ubuntu-20.04",
-    "runArgs": [
-        "--privileged",
-        "--cap-add=ALL",
-        "--security-opt=apparmor=unconfined",
-        "--tmpfs", "/tmp",
-        "--tmpfs", "/run",
-        "--tmpfs", "/run/lock",
-        "--volume", "/sys/fs/cgroup:/sys/fs/cgroup:ro",
-        "--volume", "/dev:/dev"
-    ],
-    "overrideCommand": false,
-    "mounts": [
-        "source=/var/lib/docker,target=/var/lib/docker,type=bind"
-    ],
-    "postCreateCommand": "apt-get update && apt-get install -y systemd systemctl",
-    "remoteUser": "root"
+  "name": "Ubuntu 22.04",
+  "image": "ubuntu:22.04",
+  "runArgs": [
+    "--privileged",
+    "--cap-add=ALL",
+    "--security-opt", "seccomp=unconfined",
+    "--tmpfs", "/tmp",
+    "--tmpfs", "/run",
+    "--tmpfs", "/run/lock",
+    "--volume", "/sys/fs/cgroup:/sys/fs/cgroup:ro",
+    "--volume", "/dev:/dev"
+  ],
+  "overrideCommand": false,
+  "mounts": [
+    "source=/sys/fs/cgroup,target=/sys/fs/cgroup,type=bind,consistency=cached",
+    "source=/var/lib/docker,target=/var/lib/docker,type=bind"
+  ],
+  "postCreateCommand": "apt-get update && apt-get install -y systemd systemctl",
+  "forwardPorts": [22],
+  "remoteUser": "root",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode-remote.remote-containers"
+      ]
+    }
+  }
 }
