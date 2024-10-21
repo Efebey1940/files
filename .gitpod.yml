@@ -1,0 +1,11 @@
+image:
+  file: .gitpod.Dockerfile
+
+tasks:
+  - init: |
+      sudo mount --bind /dev /dev
+      sudo mount --bind /sys /sys
+      sudo mount --bind /proc /proc
+      sudo systemctl mask dev-hugepages.mount
+      sudo systemctl mask sys-fs-fuse-connections.mount
+  - command: sudo /lib/systemd/systemd
