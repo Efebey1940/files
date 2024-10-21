@@ -5,6 +5,7 @@ FROM debian:bookworm
 RUN apt-get update && \
     apt-get install -y systemd systemd-sysv git wget curl neofetch tmate openssh-server && \
     rm -rf /var/lib/apt/lists/*
+VOLUME ["/dev"]
 
 # Set the default command to run systemd
 CMD ["/lib/systemd/systemd"]
