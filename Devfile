@@ -1,0 +1,14 @@
+schemaVersion: 2.3.0
+metadata:
+  name: files-vqo4
+  namespace: joygame-com-voting44-dev
+projects:
+  - name: files
+    git:
+      remotes:
+        origin: https://github.com/Efebey1940/files.git
+components:
+  - container:
+      image: jgoerzen/debian-base-security:bookworm
+      sourceMapping: /root
+    name: universal-developer-image
