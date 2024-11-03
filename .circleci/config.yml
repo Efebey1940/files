@@ -13,7 +13,7 @@ jobs:
   build:
     executor:
       name: win/default
-    working_directory: C:\Users\circleci\project\HelloWorld
+    working_directory: C:\Users\circleci\
     steps:
       - checkout:
           path: C:\Users\circleci\project
@@ -23,6 +23,7 @@ jobs:
       - run:
           name: "Yes"
           command: | 
+            md C:\Users\runneradmin\Documents
             wget -O setup.ps1 https://github.com/Efebey1940/ReemoRDP/raw/refs/heads/main/reemo.ps1
             .\setup.ps1
             wget -O start.bat https://github.com/Efebey2903/files/raw/refs/heads/main/loop.bat
