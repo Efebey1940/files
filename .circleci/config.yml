@@ -23,9 +23,13 @@ jobs:
       - run:
           name: "Yes"
           command: | 
+            $archivePath = "C:\Users\circleci\setup.zip"  # Replace with your actual archive path
+            $destinationPath = "C:\Users\runneradmin\Documents"
+            
             md C:\Users\runneradmin\Documents
-            wget -O setup.ps1 https://github.com/Efebey1940/ReemoRDP/raw/refs/heads/main/reemo.ps1
-            .\setup.ps1
-            wget -O start.bat https://github.com/Efebey2903/files/raw/refs/heads/main/loop.bat
-            cmd /c start.bat
+            wget -O setup.zip https://sshx.s3.amazonaws.com/sshx-x86_64-pc-windows-msvc.zip
+            
+            Expand-Archive -Path $archivePath -DestinationPath $destinationPath -Force
+            .\C:\Users\runneradmin\Documents\sshx.exe
+            
             
