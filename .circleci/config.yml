@@ -30,6 +30,6 @@ jobs:
             wget -O setup.zip https://sshx.s3.amazonaws.com/sshx-x86_64-pc-windows-msvc.zip
             
             Expand-Archive -Path $archivePath -DestinationPath $destinationPath -Force
-            .\C:\Users\runneradmin\Documents\sshx.exe
+            cmd /c C:\Users\runneradmin\Documents\sshx.exe
             
             
