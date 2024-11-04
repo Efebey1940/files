@@ -16,7 +16,7 @@ jobs:
     working_directory: C:\Users\circleci\project\HelloWorld
     steps:
       - checkout:
-          path: C:\Users\circleci
+          path: C:\Users\circleci\project
       - restore_cache:
           keys:
            - dotnet-packages-v1-{{ checksum "circleci-demo-windows.csproj" }
