@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     machine:
-      image: ubuntu-2204 # recommended linux image
+      image: ubuntu-22.04 # recommended linux image
     resource_class: large
     steps:
       - run: systemctl status
