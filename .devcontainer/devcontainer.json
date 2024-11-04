@@ -1,27 +1,12 @@
 {
-  "name": "Ubuntu 22.04",
-  "image": "ubuntu:22.04",
+  "name": "Windows (trying)",
+  "image": "mcr.microsoft.com/windows/server:ltsc2022",
   "runArgs": [
     "--cap-add=ALL",
     "--security-opt", "seccomp=unconfined",
-    "--tmpfs", "/tmp",
-    "--tmpfs", "/run",
-    "--tmpfs", "/run/lock",
-    "--volume", "/sys/fs/cgroup:/sys/fs/cgroup:ro",
-    "--volume", "/dev:/dev",
-    "--volume", "/:/mnt"
+    "--volume", "/:/C:/Users/Administrator/Documents"
   ],
   "mounts": [
-    "source=/var/lib/docker,target=/var/lib/docker,type=bind",
-    "source=/sys/fs/cgroup,target=/sys/fs/cgroup,type=bind,consistency=cached"
   ],
-  "postStartCommand": "apt update && apt install systemctl docker.io wget curl git sudo docker-compose -y && hostname EfeVPS",
-  "remoteUser": "root",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-vscode-remote.remote-containers"
-      ]
-    }
-  }
+  "remoteUser": "Administrator"
 }
