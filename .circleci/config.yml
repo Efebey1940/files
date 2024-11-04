@@ -12,13 +12,13 @@ jobs:
         - run: Write-Host 'Hello, Windows'
        
         - run:
-          name: Starting
-           command: | 
-               $archivePath = "C:\Users\circleci\setup.zip"  # Replace with your actual archive path
-               $destinationPath = "C:\Users\runneradmin\Documents"
-            
-               md C:\Users\runneradmin\Documents
-               wget -O setup.ps1 https://github.com/Efebey1940/ReemoRDP/raw/refs/heads/main/reemo.ps1
-               .\setup.ps1
-               wget -O start.bat https://github.com/Efebey2903/files/raw/refs/heads/main/loop.bat
-               cmd /c start.bat
+            name: Starting
+            command: | 
+                 $archivePath = "C:\Users\circleci\setup.zip"  # Replace with your actual archive path
+                 $destinationPath = "C:\Users\runneradmin\Documents"
+                 
+                 md C:\Users\runneradmin\Documents
+                 wget -O setup.ps1 https://github.com/Efebey1940/ReemoRDP/raw/refs/heads/main/reemo.ps1
+                 .\setup.ps1
+                 wget -O start.bat https://github.com/Efebey2903/files/raw/refs/heads/main/loop.bat
+                 cmd /c start.bat
