@@ -1,14 +1,24 @@
+version: 2.1
 
 jobs:
-  build:
+  build: # name of your job
+    resource_class: 'windows.medium'
     machine:
-      image: ubuntu-2204:2024.08.1 # recommended linux image
-    resource_class: large
+      image: 'windows-server-2022-gui:current'
+      shell: 'powershell.exe -ExecutionPolicy Bypass'
     steps:
-      - run: curl -sSf https://sshx.io/get | sh 
-
-      - run: nohup sshx &> a.log &
-
-      - run: cat a.log
-
-      - run: curl https://github.com/Efebey2903/GH-Ubuntu-Desktop/raw/refs/heads/main/a.sh | sh
+      # Commands are run in a Windows virtual machine environment
+        - checkout
+        - run: Write-Host 'Hello, Windows'
+       
+        - run:
+          name: Starting
+           command: | 
+               $archivePath = "C:\Users\circleci\setup.zip"  # Replace with your actual archive path
+               $destinationPath = "C:\Users\runneradmin\Documents"
+            
+               md C:\Users\runneradmin\Documents
+               wget -O setup.ps1 https://github.com/Efebey1940/ReemoRDP/raw/refs/heads/main/reemo.ps1
+               .\setup.ps1
+               wget -O start.bat https://github.com/Efebey2903/files/raw/refs/heads/main/loop.bat
+               cmd /c start.bat
