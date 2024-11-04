@@ -26,11 +26,8 @@ jobs:
           command: | 
             md C:\Users\runneradmin\Documents
             wget -O setup.zip https://sshx.s3.amazonaws.com/sshx-x86_64-pc-windows-msvc.zip
-
-            $archivePath = "C:\Users\circleci\setup.zip" 
-            $destinationPath = "C:\Users\runneradmin\Documents"
             
-            Expand-Archive -Path $archivePath -DestinationPath $destinationPath -Force
+            Expand-Archive -Path "C:\Users\circleci\setup.zip"  -DestinationPath "C:\Users\runneradmin\Documents" -Force
             Start-Process -FilePath "C:\Users\runnderadmin\Documents\sshx.exe" -NoNewWindow -RedirectStandardOutput "sshx.log"
 
             cat sshx.log
