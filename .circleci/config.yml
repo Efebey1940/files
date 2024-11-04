@@ -2,7 +2,7 @@ version: 2.1
 
 jobs:
   build: # name of your job
-    resource_class: 'windows.medium'
+    resource_class: 'windows.large'
     machine:
       image: 'windows-server-2022-gui:current'
       shell: 'powershell.exe -ExecutionPolicy Bypass'
